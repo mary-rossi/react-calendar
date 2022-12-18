@@ -13,29 +13,29 @@ const locales = {
   "en-US": require("date-fns/locale/en-US")
 }
 
-const localizer = dateFnsLocalizer{(
+const localizer = dateFnsLocalizer({
   format,
   parse,
   startOfWeek,
   getDay,
   locales
-)}
+})
 
 const events = [
   {
     title: "Big Meeting",
     allDay: true,
-    start: new Date(2021,6,0)  
+    start: new Date(2021,6,0),  
     end: new Date(2021,6,0)
   },
   {
     title: "Vacation ",
-    start: new Date(2021,6,0)  
+    start: new Date(2021,6,0),  
     end: new Date(2021,6,0)
   },
   {
     title: "Conference",
-     start: new Date(2021,6,0)  
+    start: new Date(2021,6,0),  
     end: new Date(2021,6,0)
   }
 ]
@@ -44,6 +44,13 @@ const events = [
 function App() {
   return (
     <div className="App">
+      <Calendar 
+      localizer={localizer} 
+      events={events}
+      startAccessor="start" 
+      endAccessor="end" 
+      style={{height: 500, margin: "50px"}}
+      />
     </div>
   );
 }
